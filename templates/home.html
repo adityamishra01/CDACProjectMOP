@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <link rel="icon" type="image/png" href="https://img.icons8.com/external-flatart-icons-lineal-color-flatarticons/64/000000/external-capsule-health-care-and-medical-flatart-icons-lineal-color-flatarticons.png" sizes="16x16">
+    <title>Opioid Medicine Overdose Risk Detection System</title>
+    <style>
+        .main{
+            text-align: center;
+            background-color: #fbfbeb;
+            justify-content: center;
+        }
+        .main img{
+            width: auto;
+            height: auto;
+            max-width: 40%;
+        }
+    </style>
+
+<!-- Favicons -->
+  <link href="../static/img/favicon.png" rel="icon">
+  <link href="../static/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  
+  
+
+  <!-- Template Main CSS File -->
+  <link href="../static/css/style.css" rel="stylesheet">
+
+
+</head>
+
+
+
+
+
+<body>
+
+  <!-- ======= Top Bar ======= -->
+  <div id="topbar" class="d-flex align-items-center fixed-top">
+    <div class="container d-flex justify-content-center justify-content-md-between">
+
+       
+
+      
+    </div>
+  </div>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-cente">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-lg-between">
+    
+      <h1 class="col-lg-8"><a href="index.html"> <span>Medicine Overdose Risk Detection</span></a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="logo me-auto me-lg-0"><img src="../static/img/logo.png" alt="" class="img-fluid"></a>-->
+
+      <nav id="navbar" class="navbar order-last order-lg-0">
+        <ul>
+          <li><a class="nav-link scrollto" href="{{ url_for('first')}}">Home</a></li>
+		    <li><a class="nav-link scrollto" href="{{ url_for('model')}}">Model</a></li>
+           
+		<li><a class="nav-link scrollto" href="{{ url_for('home')}}">Prediction</a></li>
+	    <li><a class="nav-link scrollto" href="{{ url_for('chart')}}">Analaysis</a></li>
+	    <li><a class="nav-link scrollto" href="{{ url_for('precautions')}}">precautions</a></li>
+
+
+           
+           </ul>
+          
+       
+     </nav>
+     
+
+      
+
+    </div>
+  </header><!-- End Header -->
+
+
+        
+
+
+
+<div class = main>
+
+    <img src="{{url_for('static',filename ='OPDS.png')}}">
+    <div class="form-group row" style="flex-direction: row ;font-size: large;">
+
+        <H style="font-size: larger;"><b><u>General Information</u></b></H>
+
+        <div style="margin-top: 2rem;" class="col-sm-10">
+        <label >First Name : </label>
+        <input type="text" id="Fn" class="form-control" placeholder="First name">
+        
+        <label >Last Name : </label>
+        <input type="text" id="Ln" class="form-control" placeholder="Last name">
+        </div>
+
+        <div class="col-sm-10" style="margin: 7px;">
+        <label style="margin-left: -56px;">Date of Birth : </label>
+        <input type="date" id="birthday" name="birthday">
+
+        <label style="margin-left: 22px;">Gender : </label>
+        <label>
+            <input type="radio" name="choice-radio">
+            Male
+          </label>
+          <label>
+            <input type="radio" name="choice-radio">
+            Female
+        </label>
+        </div>
+
+        
+
+        <div style="margin-bottom: 2rem;">
+        </div>
+        <H style="font-size: larger;"><b><u>Prescription Information</u></b></H>
+        <p> (Answer Does Your Prescription Includes) </p>
+
+        <div class= "row" style="display: flex;margin-left: 25%;margin-right: 25%;">
+
+            <div class ="column" style="flex:70%;text-align: left; "> 
+                <h>1. <b>NovoLog FlexPen</b>
+                 (It is an insulin analog indicated to improve glycemic control in adults and children with diabetes mellitus.)
+                </h>
+
+                <br>
+                <br>
+                <h>2. <b>Dutasteride</b>
+                  (This medication is used in men to treat the symptoms of an enlarged prostate (benign prostatic hyperplasia-BPH). It works by reducing the size of the enlarged prostate.)
+                </h>
+
+                <br>
+                <br>
+                <h>3. <b>Timolol</b>
+                  (It is a beta blocker medication used either by mouth or as eye drops. As eye drops it is used to treat increased pressure inside the eye such as in ocular hypertension and glaucoma)
+                </h>
+
+                <br>
+                <br>
+                <h>4. <b>Omega-3 acid ethyl esters</b>
+                 (Omega-3 acid ethyl esters are ethyl esters of the omega-3 fatty acids eicosapentaenoic acid and docosahexaenoic acid found in fish oil. Together with dietary changes, they are used to treat high blood triglycerides which may reduce the risk of pancreatitis.)
+                </h>
+
+                <br>
+                <br>
+                <h>5. Prescription for <b> Alzheimer's ?</b>
+                </h>
+
+                <br>
+                <br>
+                <h>6. Prescription for <b> Diabetes ?</b>
+                </h>
+
+
+                <br>
+                <br>
+                <h>7. <b>Travoprost</b>
+                 (It is a medication used to treat high pressure inside the eye including glaucoma. Specifically it is used for open angle glaucoma when other agents are not sufficient.)
+                </h>
+
+                <br>
+                <br>
+                <h>8. <b>Finasteride</b>
+                 (It is a medication used to treat hair loss and benign prostatic hyperplasia in men.)
+                </h>
+
+                <br>
+                <br>
+                <h>9. Any past history of <b>Heart Attack ?</b> 
+                </h>
+
+                <br>
+                <br>
+                <h>10. <b>Latanoprost</b>
+                 (It is a medication used to treat increased pressure inside the eye. This includes ocular hypertension and open angle glaucoma. It is applied as eye drops to the eyes.)
+                </h>
+
+                <br>
+                <br>
+                <h>11. <b>Insulin glargine</b>
+                 (It is a long-acting insulin, used in the management of type I and type II diabetes. It is typically the recommended long acting insulin in the United Kingdom. It is used once a day as an injection just under the skin.)
+                </h>
+
+                <br>
+                <br>
+                <h>12. <b>Insulin detemir</b>
+                 (It is a long-acting insulin used to treat both type 1 and type 2 diabetes. It is used by injection under the skin. It is effective for up to 24 hours.)
+                </h>
+
+                <br>
+                <br>
+                <h>13. <b>Brimonidine Tartrate</b>
+                 (This medication is used to treat open-angle glaucoma or high fluid pressure in the eye. Lowering high fluid pressure in the eye reduces the risk of vision loss, nerve damage, or blindness.)
+                </h>
+
+                <br>
+                <br>
+                <h>14. <b>Bimatoprost</b>
+                 (It is a medication used to treat high pressure inside the eye including glaucoma. Specifically it is used for open angle glaucoma when other agents are not sufficient. It may also be used to increase the size of the eyelashes. )
+                </h>
+
+                <br>
+                <br>
+                <h>15. <b>Cyclosporine</b>
+                 (It is a calcineurin inhibitor, used as an immunosuppressant medication. It is a natural product. It is taken by mouth or by injection into a vein for rheumatoid arthritis, psoriasis, Crohn's disease, nephrotic syndrome, and in organ transplants to prevent rejection)
+                </h>
+
+                <br>
+                <br>
+                <h>16. <b>Morphine sulfate</b>
+                 (A strong prescription pain medicine that contains an opioid (narcotic) that is used to manage pain severe enough to require daily around-the-clock, long-term treatment with an opioid, when other pain treatments such as non-opioid pain medicines or immediate-release opioid medicines do not treat)
+                </h>
+
+                <br>
+                <br>
+                <h>17. <b>Neomycin Topical</b>
+                 (It is used to prevent or treat skin infections caused by bacteria. It is not effective against fungal or viral infections.)
+                </h>
+
+                <br>
+                <br>
+                <h>18. <b>Primidone</b>
+                 (It  is a barbiturate medication that is used to treat partial and generalized seizures, as well as essential tremors. It is taken by mouth. )
+                </h>
+
+                <br>
+                <br>
+                <h>19. <b>Humalog</b>
+                 (It is a type of insulin used to treat type 1 and type 2 diabetes. Typically it is taken around the time of eating. It is used by injection under the skin or within an insulin pump.)
+                </h>
+
+                <br>
+                <br>
+                <h>20. <b>NovoLog</b>
+                 (It is a type of manufactured insulin used to treat type 1 and type 2 diabetes. Typically it is taken just before eating. It is generally used by injection under the skin but may also be used by injection into a vein.)
+                </h>
+
+                <br>
+                <br>
+                <h>21. <b>Dorzolamide / Timolol</b>
+                 (It is a medication used to treat high pressure inside the eye including glaucoma. It is a combination of dorzolamide hydrochloride and timolol maleate. It may be used when a beta blocker, like timolol, is not sufficient alone. It is used as an eye drop. )
+                </h>
+
+                <br>
+                <br>
+                <h>22. <b>Diclofenac</b>
+                 (Diclofenac, sold under the brand name Voltaren among others, is a nonsteroidal anti-inflammatory drug used to treat pain and inflammatory diseases such as gout. It is taken by mouth, rectally in a suppository, used by injection, or applied to the skin. Improvements in pain last for as much as eight hours.)
+                </h>
+
+
+            </div>
+
+            <div class ="column" style="flex:30%"> 
+                <label><input type="checkbox" id="F1Y" value=1 onclick = "check(1)">Yes</label>
+                <label><input type="checkbox" id="F1N" value=0 onclick ="check(1)">No</label>
+
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <label><input type="checkbox" id="F2Y" value=1 onclick = "check(2)">Yes</label>
+                <label><input type="checkbox" id="F2N" value=0 onclick ="check(2)">No</label>
+
+                <br>
+                <br>
+                <br>
+                <br>
+                <label><input type="checkbox" id="F3Y" value=1 onclick = "check(3)">Yes</label>
+                <label><input type="checkbox" id="F3N" value=0 onclick ="check(3)">No</label>
+
+                <br>
+                <br>
+                <br>
+                <br>
+                <label><input type="checkbox" id="F4Y" value=1 onclick = "check(4)">Yes</label>
+                <label><input type="checkbox" id="F4N" value=0 onclick ="check(4)">No</label>
+
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <label><input type="checkbox" id="F5Y" value=1 onclick = "check(5)">Yes</label>
+                <label><input type="checkbox" id="F5N" value=0 onclick ="check(5)">No</label>
+
+                <br>
+                <br>
+                <label><input type="checkbox" id="F6Y" value=1 onclick = "check(6)">Yes</label>
+                <label><input type="checkbox" id="F6N" value=0 onclick ="check(6)">No</label>
+
+                <br>
+                <br>
+                <label><input type="checkbox" id="F7Y" value=1 onclick = "check(7)">Yes</label>
+                <label><input type="checkbox" id="F7N" value=0 onclick ="check(7)">No</label>
+
+                <br>
+                <br>
+                <br>
+                <br>
+                <label><input type="checkbox" id="F8Y" value=1 onclick = "check(8)">Yes</label>
+                <label><input type="checkbox" id="F8N" value=0 onclick ="check(8)">No</label>
+
+                <br>
+                <br>
+                <br>
+                <label><input type="checkbox" id="F9Y" value=1 onclick = "check(9)">Yes</label>
+                <label><input type="checkbox" id="F9N" value=0 onclick ="check(9)">No</label>
+
+                <br>
+                <br>
+                <label><input type="checkbox" id="F10Y" value=1 onclick = "check(10)">Yes</label>
+                <label><input type="checkbox" id="F10N" value=0 onclick ="check(10)">No</label>
+
+                <br>
+                <br>
+                <br>
+                <br>
+                <label><input type="checkbox" id="F11Y" value=1 onclick = "check(11)">Yes</label>
+                <label><input type="checkbox" id="F11N" value=0 onclick ="check(11)">No</label>
+
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <label><input type="checkbox" id="F12Y" value=1 onclick = "check(12)">Yes</label>
+                <label><input type="checkbox" id="F12N" value=0 onclick ="check(12)">No</label>
+
+                <br>
+                <br>
+                <br>
+                <br>
+                <label><input type="checkbox" id="F13Y" value=1 onclick = "check(13)">Yes</label>
+                <label><input type="checkbox" id="F13N" value=0 onclick ="check(13)">No</label>
+
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <label><input type="checkbox" id="F14Y" value=1 onclick = "check(14)">Yes</label>
+                <label><input type="checkbox" id="F14N" value=0 onclick ="check(14)">No</label>
+
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <label><input type="checkbox" id="F15Y" value=1 onclick = "check(15)">Yes</label>
+                <label><input type="checkbox" id="F15N" value=0 onclick ="check(15)">No</label>
+
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <label><input type="checkbox" id="F16Y" value=1 onclick = "check(16)">Yes</label>
+                <label><input type="checkbox" id="F16N" value=0 onclick ="check(16)">No</label>
+
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <label><input type="checkbox" id="F17Y" value=1 onclick = "check(17)">Yes</label>
+                <label><input type="checkbox" id="F17N" value=0 onclick ="check(17)">No</label>
+
+                <br>
+                <br>
+                <br>
+                <br>
+                <label><input type="checkbox" id="F18Y" value=1 onclick = "check(18)">Yes</label>
+                <label><input type="checkbox" id="F18N" value=0 onclick ="check(18)">No</label>
+
+                <br>
+                <br>
+                <br>
+                <br>
+                <label><input type="checkbox" id="F19Y" value=1 onclick = "check(19)">Yes</label>
+                <label><input type="checkbox" id="F19N" value=0 onclick ="check(19)">No</label>
+
+                <br>
+                <br>
+                <br>
+                <br>
+                <label><input type="checkbox" id="F20Y" value=1 onclick = "check(20)">Yes</label>
+                <label><input type="checkbox" id="F20N" value=0 onclick ="check(20)">No</label>
+
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <label><input type="checkbox" id="F21Y" value=1 onclick = "check(21)">Yes</label>
+                <label><input type="checkbox" id="F21N" value=0 onclick ="check(21)">No</label>
+
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <label><input type="checkbox" id="F22Y" value=1 onclick = "check(22)">Yes</label>
+                <label><input type="checkbox" id="F22N" value=0 onclick ="check(22)">No</label>
+            </div>
+
+        </div>
+
+        <div style="margin-bottom: 3rem;">
+        </div>
+
+        <button type="submit" onclick = "main()" class="btn btn-primary">Submit</button>
+        
+        <div style="margin-bottom: 8rem;">
+        </div>
+
+        <div id = "graph" style="justify-content: center;visibility: hidden; margin-bottom: -434px;">
+            <H style="font-size: larger;"><b><u>Result</u></b></H>
+            <p id="Conc"></p>
+            <canvas  id="myChart" style="width:100%;max-width:600px;margin:0 auto;"></canvas>
+            <div style="margin-bottom: 8rem;">
+            </div>
+        </div>
+
+            </div>
+</div>    
+</body>
+
+<script>
+var Features = [] 
+var yValues = [0.54,0.48];
+
+for (let i = 1; i < 23; i++) {
+    var T = "F"+String(i)
+    Features.push(0)
+    document.getElementById("F"+String(i)+"Y").checked = false;
+    document.getElementById("F"+String(i)+"N").checked = true;
+    //console.log(T)
+}
+
+function check(i) {
+    if(Features[i-1]==0)
+    {
+        Features[i-1]=1;
+        document.getElementById("F"+String(i)+"Y").checked = true;
+        document.getElementById("F"+String(i)+"N").checked = false;
+        //console.log("F"+String(i))
+    }
+    else
+    {
+        Features[i-1]=0;
+        document.getElementById("F"+String(i)+"Y").checked = false;
+        document.getElementById("F"+String(i)+"N").checked = true;
+        //console.log("F"+String(i))
+    }
+    // for (let i = 1; i < 23; i++)
+    // {
+    //     console.log(Features[i-1])
+    // }
+    // console.log("\n")
+}
+
+function main() {
+    var Result = []
+    var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
+    xmlhttp.open("POST", "/Predict");
+    xmlhttp.responseType = "json";
+    xmlhttp.setRequestHeader("Content-Type", "application/json");
+    xmlhttp.onreadystatechange = function () {
+    if (this.readyState == 4) {
+       var blob = new Blob([this.response], { type: "application/octet-stream" });
+       Result = this.response
+       console.log(Result)
+       yValues[0] = Result[0]*100
+       yValues[1] = Result[1]*100
+       Chart.update();
+       document.getElementById("graph").style.visibility = "visible";
+       document.getElementById("graph").style.marginBottom = "0px";
+       var conc = document.getElementById("Conc");
+       if(Result[1]<0.4)
+       {
+           var Name =  document.getElementById("Fn").value;
+           conc.innerHTML = "Hey "+Name+", you are in a good condition no need to worry.";
+       } 
+       else if(Result[1]<0.6)
+       {
+           var Name =  document.getElementById("Fn").value;
+           conc.innerHTML = "Hey "+Name+", you are in a fair condition but you need to take proper care.";
+       }
+       else
+       {
+           var Name =  document.getElementById("Fn").value;
+           conc.innerHTML = "Hey "+Name+", you are not in a good condition you should take care for yourself";
+       }
+
+    }
+    };
+    xmlhttp.send(JSON.stringify(Features));
+    
+
+}
+
+var xValues = ["Safe", "Danger"];
+
+var barColors = [
+  "#00FF00",
+  "#ff0000"
+];
+
+var Chart  = new Chart("myChart", {
+  type: "doughnut",
+  data: {
+    labels: xValues,
+    datasets: [{
+      backgroundColor: barColors,
+      data: yValues
+    }]
+  },
+  options: {
+    title: {
+      display: true,
+      text: "Overall Risk Percentage"
+    }
+  }
+});
+
+function myFunction() {
+  var x = document.getElementById("myCheck").value;
+  document.getElementById("demo").innerHTML = x;
+}
+
+</script>
+
+
+</html>
